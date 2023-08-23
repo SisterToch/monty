@@ -6,7 +6,7 @@
  * Return: nothing
 */
 
-void c_pall(stack_t **stack, unsigned int number)
+void pall(stack_t **stack, unsigned int number)
 {
 	stack_t *current;
 	(void)number; /* this parameter not used */

@@ -40,8 +40,9 @@ typedef struct instruction_s
 } instruction_t;
 
 
-void c_pall(stack_t **stack, unsigned int number);
+void pall(stack_t **stack, unsigned int number);
 void push(stack_t **stack, int value, unsigned int number);
 int main(int argc, char *argv[]);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif

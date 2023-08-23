@@ -51,12 +51,16 @@ int main(int argc, char *argv[])
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
 			}
-            push(&stack, value, line_number);
-        }
+			push(&stack, value, line_number);
+		}
         else if (strcmp(token, "pall") == 0)
         {
-            c_pall(&stack, line_number);
+            pall(&stack, line_number);
         }
+	else if (strcmp(token, "pint") == 0)
+	{
+		pint(&stack, line_number);
+	}
         /*Add more opcode handlers here as needed*/
         else
         {
