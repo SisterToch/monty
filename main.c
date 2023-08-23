@@ -1,7 +1,7 @@
-#include <stdio.h>
 #include "monty.h"
 
 stack_t *stack = NULL;
+
 int main(int argc, char *argv[])
 {
 	char *filename, *token;
@@ -12,45 +12,45 @@ int main(int argc, char *argv[])
 	unsigned int line_number;
 	int value;
 
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	filename = argv[1];
-    monty_file = fopen(filename, "r");
-    if (monty_file == NULL)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", filename);
-        exit(EXIT_FAILURE);
-   }
+	monty_file = fopen(filename, "r");
+	if (monty_file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
 
-    line_number = 0;
+	line_number = 0;
 
-    while ((read = getline(&line, &len, monty_file)) != -1)
-    {
-        line_number++;
+	while ((read = getline(&line, &len, monty_file)) != -1)
+	{
+		line_number++;
 
         /*Tokenize the line to separate the command and its argument (if any)*/
-        token = strtok(line, " \t\n");
-        if (token == NULL)
-            continue;
+		token = strtok(line, " \t\n");
+		if (token == NULL)
+			continue;
 
-        if (strcmp(token, "push") == 0)
-        {
-            token = strtok(NULL, " \t\n");
-            if (token == NULL)
-            {
-                fprintf(stderr, "L%u: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE);
-            }
-            value = atoi(token);
-            if (value == 0 && *token != '0')
-            {
-                fprintf(stderr, "L%u: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE);
-            }
+		if (strcmp(token, "push") == 0)
+		{
+			token = strtok(NULL, " \t\n");
+			if (token == NULL)
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
+			value = atoi(token);
+			if (value == 0 && *token != '0')
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
             push(&stack, value, line_number);
         }
         else if (strcmp(token, "pall") == 0)
