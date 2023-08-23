@@ -69,6 +69,10 @@ int main(int argc, char *argv[])
 	{
 		swap(&stack, line_number);
 	}
+	else if (strcmp(token, "add") == 0)
+	{
+		add(&stack, line_number);
+	}
         /*Add more opcode handlers here as needed*/
         else
         {
