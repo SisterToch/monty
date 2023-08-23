@@ -73,6 +73,10 @@ int main(int argc, char *argv[])
 	{
 		add(&stack, line_number);
 	}
+	else if (strcmp(token, "nop") == 0)
+	{
+		nop(&stack, line_number);
+	}
         /*Add more opcode handlers here as needed*/
         else
         {
