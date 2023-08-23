@@ -61,6 +61,10 @@ int main(int argc, char *argv[])
 	{
 		pint(&stack, line_number);
 	}
+	else if (strcmp(token, "pop") == 0)
+	{
+		pop(&stack, line_number);
+	}
         /*Add more opcode handlers here as needed*/
         else
         {
