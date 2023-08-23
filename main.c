@@ -86,9 +86,9 @@ int main(int argc, char *argv[])
     }
 
     /*Close the file and free allocated memory*/
-    fclose(monty_file);
-    if (line)
-        free(line);
+    free_stack(stack);
+	free(line);
+	fclose(monty_file);
 
     return EXIT_SUCCESS;
 }
