@@ -14,6 +14,7 @@ void add(stack_t **stack, unsigned int number)
 		exit(EXIT_FAILURE);
 	}
 
+/*add the value below the top element with the top element*/
 	(*stack)->next->n += (*stack)->n;
 	pop(stack, number);
-}
+}/*pop removes the top element*/
