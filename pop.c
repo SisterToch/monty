@@ -1,13 +1,14 @@
 #include "monty.h"
-
 /**
- * pop - Removes the top element of the stack.
- * @stack: A pointer to the stack.
- * @line_number: The line number of the instruction.
+ * pop - functions removes the top element of a stack.
+ * @stack: this is the head od the stack. It points to head
+ * @line_number: The line number or instruction number
+ *
+ * return: return nothing.
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	stack_t *current;
 
     if (*stack == NULL)
     {
@@ -15,10 +16,10 @@ void pop(stack_t **stack, unsigned int line_number)
         exit(EXIT_FAILURE);
     }
 
-    temp = *stack;
+    current = *stack;
     *stack = (*stack)->next;
     if (*stack != NULL)
         (*stack)->prev = NULL;
-    free(temp);
+    free(current);
 }
 

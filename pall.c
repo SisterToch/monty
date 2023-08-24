@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * c_pall - prints the stack
- * @head: the head of the stack
- * @number: acts like a counter (unused)
+ * pall - prints the stack
+ * @stack: the head of the stack
+ * @number: this is the line number or the instruction number
  * Return: nothing
 */
 

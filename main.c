@@ -1,10 +1,17 @@
 #include "monty.h"
-
+/**
+ * main - This is the foundation of the code, it creates
+ * a fulcum that has embedded in it, functions for
+ * interpreting byte code and implementing them.
+ * @argc: this is the number of the argument
+ * @argv: the command line arguments itself
+ * return: exits the program if done
+ */
 stack_t *stack = NULL;
 
 int main(int argc, char *argv[])
 {
-	char *filename, *token;
+	char *file_name, *token;
 	FILE *monty_file;
 	char *line = NULL;
 	size_t len = 0;
@@ -12,17 +19,18 @@ int main(int argc, char *argv[])
 	unsigned int line_number;
 	int value;
 
+/*if the argument is just one, there is an error. should b 2*/
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	filename = argv[1];
-	monty_file = fopen(filename, "r");
+	file_name = argv[1];
+	monty_file = fopen(file_name, "r"); /*open d monty file*/
 	if (monty_file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 
@@ -32,7 +40,7 @@ int main(int argc, char *argv[])
 	{
 		line_number++;
 
-        /*Tokenize the line to separate the command and its argument (if any)*/
+        /*Tokenize the line to separate the comnand)*/
 		token = strtok(line, " \t\n");
 		if (token == NULL)
 			continue;
@@ -77,7 +85,7 @@ int main(int argc, char *argv[])
 	{
 		nop(&stack, line_number);
 	}
-        /*Add more opcode handlers here as needed*/
+/*above is used to include the opcodes*/
         else
         {
             fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
@@ -85,10 +93,10 @@ int main(int argc, char *argv[])
         }
     }
 
-    /*Close the file and free allocated memory*/
-    free_stack(stack);
+/*i used here to close the file and free the allocated memory when the file exits*/
+	free_stackmemory(stack);
 	free(line);
 	fclose(monty_file);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

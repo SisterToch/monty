@@ -1,14 +1,18 @@
 #include "monty.h"
-
-void free_stack(stack_t *stack)
+/**
+ * free_stack - function frees memory when program
+ * exits.
+ * @stack: the stack to be freed
+ * return: nothing
+*/
+void free_stackmemory(stack_t *stack)
 {
-    stack_t *temp;
+	stack_t *current;
 
-    while (stack != NULL)
-    {
-        temp = stack;
-        stack = stack->next;
-        free(temp);
-    }
+	while (stack != NULL)
+	{
+		current = stack;
+		stack = stack->next;
+		free(current);
+	}
 }
-
